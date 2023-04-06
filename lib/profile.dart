@@ -26,18 +26,19 @@ class _ProfilePageState extends State<ProfilePage> {
     super.dispose();
   }
 
+
   @override
   Widget build(BuildContext context) {
     final _width = MediaQuery.of(context).size.width;
     return Scaffold(
       backgroundColor: Color(0xFFF5F8FA),
-      appBar: MyAppBar(),
-      body: ListView(
-        children: [
-          Container(
-            margin: EdgeInsets.fromLTRB(_width * 0.07, 0, 0, 0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
+      body: Container(
+        margin: EdgeInsets.symmetric(horizontal:_width * 0.07, vertical: 30.sp),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Column(
               children: [
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -208,56 +209,53 @@ class _ProfilePageState extends State<ProfilePage> {
                       fontWeight: FontWeight.bold,
                     ),),
                 ),
-                SizedBox(height: 170.h,),
-                Row(
-                  children: [
-                    ElevatedButton(
-                      onPressed: () {  },
-                      style: ElevatedButton.styleFrom(
-                        primary: Color(0xFFF5F8FA),
-                        onPrimary: Colors.black,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(30),
-                          side: BorderSide(color: Colors.black, width: 2),
-                        ),
-                        fixedSize: Size(120.h, 50.w),
-                      ),
-                      child: Text(
-                        'Done',
-                        style: TextStyle(
-                          fontSize: 25.sp,
-                        ),
-                      ),
-                    ),
-                    SizedBox(width: 100.w,),
-                    ElevatedButton(
-                      onPressed: () {  },
-                      style: ElevatedButton.styleFrom(
-                        primary: Color(0xFFF5F8FA),
-                        onPrimary: Colors.black,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(30),
-                          side: BorderSide(color: Colors.black, width: 2),
-                        ),
-                        fixedSize: Size(120.h, 50.w),
-                      ),
-                      child: Text(
-                        'Next',
-                        style: TextStyle(
-                          fontSize: 25.sp,
-                        ),
-                      ),
-                    ),
-
-                  ],
-                )
               ],
             ),
-          ),
-        ],
-      ),
-      bottomNavigationBar: MyBottomArea(),
 
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                ElevatedButton(
+                  onPressed: () {  },
+                  style: ElevatedButton.styleFrom(
+                    primary: Color(0xFFF5F8FA),
+                    onPrimary: Colors.black,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(30.sp),
+                      side: BorderSide(color: Colors.black, width: 2),
+                    ),
+                    fixedSize: Size(120.sp, 50.sp),
+                  ),
+                  child: Text(
+                    'Done',
+                    style: TextStyle(
+                      fontSize: 25.sp,
+                    ),
+                  ),
+                ),
+                ElevatedButton(
+                  onPressed: () {  },
+                  style: ElevatedButton.styleFrom(
+                    primary: Color(0xFFF5F8FA),
+                    onPrimary: Colors.black,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(30.sp),
+                      side: BorderSide(color: Colors.black, width: 2),
+                    ),
+                    fixedSize: Size(120.sp, 50.sp),
+                  ),
+                  child: Text(
+                    'Next',
+                    style: TextStyle(
+                      fontSize: 25.sp,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ],
+        ),
+      ),
     );
   }
 }

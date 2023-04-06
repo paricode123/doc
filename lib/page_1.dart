@@ -2,121 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:doc/profile.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
-  String title=' Dr Arup';
-
-
-  @override
-  Widget build(BuildContext context) {
-    final _width = MediaQuery.of(context).size.width;
-    return AppBar(
-      backgroundColor: Color(0xFFF5F8FA),
-      title: Text(
-        title,
-        style: TextStyle(
-          fontSize: 30,
-          fontWeight: FontWeight.bold,
-          color: Colors.black,
-        ),
-      ),
-      centerTitle: true,
-      elevation: 0,
-      toolbarHeight: 150,
-      leading: Padding(
-        padding: const EdgeInsets.only(left: 17.0),
-        child: CircleAvatar(
-          backgroundImage: AssetImage('assets/image/doc.png'),
-          radius: 50,
-        ),
-      ),
-      actions: [
-        IconButton(
-          icon: Padding(
-            padding: const EdgeInsets.only(right: 20.0),
-            child: Icon(
-              Icons.more_vert,
-              color: Colors.black,
-              size: 40,
-            ),
-          ),
-          onPressed: () {
-            // TODO: Implement action for three-dot icon
-          },
-        ),
-      ],
-    );
-  }
-
-  @override
-  Size get preferredSize => Size.fromHeight(150);
-}
-
-class MyBottomArea extends StatefulWidget {
-  const MyBottomArea();
-
-  @override
-  _MyBottomAreaState createState() => _MyBottomAreaState();
-}
-
-class _MyBottomAreaState extends State<MyBottomArea> {
-  int _currentIndex = 0;
-  List<String> _iconNames = ['home.png', 'help.png', 'dollar.png'];
-  List<bool> _isSelected = [true, false, false];
-
-  void _onItemTapped(int index) {
-    setState(() {
-      _currentIndex = index;
-      for (int i = 0; i < _isSelected.length; i++) {
-        _isSelected[i] = i == index;
-      }
-    });
-
-    switch (index) {
-      case 0:
-        Navigator.push(
-          context,
-          MaterialPageRoute(builder: (context) => MyPage()),
-        );
-        break;
-      case 1:
-        Navigator.push(
-          context,
-          MaterialPageRoute(builder: (context) => HelpScreen()),
-        );
-        break;
-      case 2:
-      // Navigate to Dollar screen
-        break;
-    }
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return BottomNavigationBar(
-      showSelectedLabels: false,
-      showUnselectedLabels: false,
-      backgroundColor: Color(0xFFF5F8FA),
-      elevation: 0,
-      currentIndex: _currentIndex,
-      onTap: _onItemTapped,
-      items: List.generate(
-        _iconNames.length,
-            (index) => BottomNavigationBarItem(
-          icon: InkWell(
-            onTap: () => _onItemTapped(index),
-            child: Image.asset(
-              'assets/image/${_iconNames[index]}',
-              width: 35,
-              height: 35,
-              color: _isSelected[index] ? Colors.blue : null,
-            ),
-          ),
-          label: '',
-        ),
-      ),
-    );
-  }
-}
 
 class MyPage extends StatefulWidget {
   @override
@@ -131,7 +16,6 @@ class _MyPageState extends State<MyPage> {
     final _width = MediaQuery.of(context).size.width;
     return Scaffold(
       backgroundColor: Color(0xFFF5F8FA),
-      appBar: MyAppBar(),
       body: Container(
         padding: EdgeInsets.all(16.0),
         // margin: EdgeInsets.fromLTRB(_width * 0.07, 0, 0, 0),
@@ -196,8 +80,6 @@ class _MyPageState extends State<MyPage> {
           ],
         ),
       ),
-      bottomNavigationBar: MyBottomArea(),
-
     );
   }
 }
@@ -217,7 +99,6 @@ class _HelpScreenState extends State<HelpScreen> {
   Widget build(BuildContext context) {
     final _width = MediaQuery.of(context).size.width;
     return Scaffold(
-      appBar: MyAppBar(),
       backgroundColor: Color(0xFFF5F8FA),
       body: Container(
         child: Column(
@@ -232,7 +113,6 @@ class _HelpScreenState extends State<HelpScreen> {
           ],
         ),
       ),
-      bottomNavigationBar: MyBottomArea(),
     );
   }
 }
